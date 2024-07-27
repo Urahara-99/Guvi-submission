@@ -1,15 +1,12 @@
 $(document).ready(function () {
-    // Load profile info on page load
     loadProfile();
 
-    // Handle form submission
     $("#editProfileForm").submit(function (event) {
         event.preventDefault();
         saveProfile();
     });
 });
 
-// Function to load profile information
 function loadProfile() {
     var username = localStorage.getItem("username");
     if (!username) {
@@ -20,17 +17,17 @@ function loadProfile() {
     $.ajax({
         url: 'php/profile.php',
         type: 'GET',
+        dataType: 'json', // Automatically parse response as JSON
         data: { username: username },
         success: function (response) {
-            var jsonResponse = JSON.parse(response);
-            if (jsonResponse.status === 'success') {
-                $("#username").val(jsonResponse.data.username);
-                $("#email").val(jsonResponse.data.email);
-                $("#dob").val(jsonResponse.data.dob);
-                $("#age").val(jsonResponse.data.age);
-                $("#contact_number").val(jsonResponse.data.contact_number);
+            if (response.status === 'success') {
+                $("#username").val(response.data.username);
+                $("#email").val(response.data.email);
+                $("#dob").val(response.data.dob);
+                $("#age").val(response.data.age);
+                $("#contact_number").val(response.data.contact_number);
             } else {
-                alert(jsonResponse.message);
+                alert(response.message);
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -39,11 +36,9 @@ function loadProfile() {
     });
 }
 
-// Function to save profile information
 function saveProfile() {
     var formData = $("#editProfileForm").serialize();
 
-    // Client-side validation
     var email = $("#email").val();
     var dob = $("#dob").val();
     var age = $("#age").val();
@@ -72,14 +67,14 @@ function saveProfile() {
     $.ajax({
         url: 'php/edit_profile.php',
         type: 'POST',
+        dataType: 'json', // Automatically parse response as JSON
         data: formData,
         success: function (response) {
-            var jsonResponse = JSON.parse(response);
-            if (jsonResponse.status === 'success') {
+            if (response.status === 'success') {
                 alert('Profile updated successfully');
                 window.location.href = "login.html";
             } else {
-                alert(jsonResponse.message);
+                alert(response.message);
             }
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -88,7 +83,6 @@ function saveProfile() {
     });
 }
 
-// Validation functions
 function validateEmail(email) {
     var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
