@@ -32,7 +32,7 @@ body {
 
 .form-container {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 30px;
+    padding: 60px;
     border-radius: 10px;
     background-color: #ffffff;
     margin: 0 auto;
@@ -41,6 +41,7 @@ body {
 
 .form-group .col-md-6 {
     margin-bottom: -20px;
+    padding: 20px;
 }
 
 .btn-custom {
@@ -57,17 +58,4 @@ body {
     text-transform: uppercase;
     font-weight: bold;
 }
-.btn-custom {
-        display: block;
-        width: 100%;
-        margin: 10px 0;
-        padding: 10px;
-        font-size: 16px;
-        text-align: center;
-}
-    
-.text-center {
-        text-align: center;
-}
-    
 
