@@ -2,6 +2,8 @@
 header('Content-Type: application/json');
 error_reporting(0);
 
+session_start();
+
 // Database credentials
 $mysqlHost = 'localhost';
 $mysqlUser = 'root';
@@ -87,4 +89,9 @@ if ($stmt->execute()) {
 }
 
 $mysqli->close();
+
+// Catch-all block to ensure valid JSON response
+if (json_last_error() !== JSON_ERROR_NONE) {
+    echo json_encode(['status' => 'error', 'message' => 'JSON encoding error: ' . json_last_error_msg()]);
+}
 ?>

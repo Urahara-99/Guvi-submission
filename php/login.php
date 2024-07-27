@@ -1,6 +1,7 @@
 <?php
 header('Content-Type: application/json');
 error_reporting(0);
+session_start();
 
 require '../includes/predis_session.php'; // Include the Redis session handler
 

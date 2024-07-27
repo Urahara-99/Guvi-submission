@@ -1,6 +1,7 @@
 <?php
 header('Content-Type: application/json');
 error_reporting(0);
+session_start();
 
 // Database credentials
 $mysqlHost = 'localhost';
