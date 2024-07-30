@@ -34,14 +34,13 @@ $(document).ready(function () {
         };
 
         $.ajax({
-            url: 'php/register.php', // URL to PHP script
+            url: 'php/register.php', 
             type: 'POST',
             data: formData,
-            dataType: 'json', // Expect JSON response
+            dataType: 'json', 
             success: function (response) {
                 if (response.status === 'success') {
                     $('#responseMessage').html('<div class="alert alert-success">' + response.message + '</div>');
-                    // Optionally redirect or clear form fields
                 } else {
                     $('#responseMessage').html('<div class="alert alert-danger">' + response.message + '</div>');
                 }
