@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 error_reporting(0);
 session_start();
 
-require '../includes/predis_session.php'; // Include the Redis session handler
+require '../includes/predis_session.php'; 
 
 // Database connection
 $conn = new mysqli("localhost", "root", "", "user_management");
@@ -44,7 +44,7 @@ $result = $stmt->get_result();
 if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
     if (password_verify($password, $user['password'])) {
-        $_SESSION['user'] = $user['username']; // Store username in session
+        $_SESSION['user'] = $user['username']; 
         echo json_encode(["status" => "Login successful!", "user" => $user['username']]);
     } else {
         echo json_encode(["status" => "Error: Invalid credentials."]);
