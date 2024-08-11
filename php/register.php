@@ -7,12 +7,12 @@ session_start();
 $mysqlHost = 'localhost';
 $mysqlUser = 'root';
 $mysqlPass = '';
-$mysqlDb = 'user_management';
+$mysqlDb = 'user_management'; // MySQL database
 
 // MongoDB credentials
 $mongoHost = 'localhost';
 $mongoPort = 27017;
-$mongoDb = 'user_management'; 
+$mongoDb = 'user_management'; // MongoDB database
 
 // Create MySQL connection
 $mysqli = new mysqli($mysqlHost, $mysqlUser, $mysqlPass, $mysqlDb);
