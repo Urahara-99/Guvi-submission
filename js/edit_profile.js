@@ -17,7 +17,7 @@ function loadProfile() {
     $.ajax({
         url: 'php/profile.php',
         type: 'GET',
-        dataType: 'json',
+        dataType: 'json', // Automatically parse response as JSON
         data: { username: username },
         success: function (response) {
             if (response.status === 'success') {
@@ -67,7 +67,7 @@ function saveProfile() {
     $.ajax({
         url: 'php/edit_profile.php',
         type: 'POST',
-        dataType: 'json', 
+        dataType: 'json', // Automatically parse response as JSON
         data: formData,
         success: function (response) {
             if (response.status === 'success') {

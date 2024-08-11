@@ -12,7 +12,7 @@ function loadProfile() {
     $.ajax({
         url: 'php/profile.php',
         type: 'GET',
-        dataType: 'json', 
+        dataType: 'json', // Automatically parse response as JSON
         data: { username: username },
         success: function (response) {
             if (response.status === 'success') {
